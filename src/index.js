@@ -10,7 +10,16 @@ dotenv.config({
 })
 
 
-connectDb();
+connectDb()
+.then(()=>{
+    app.listen(process.env.PORT || 4000,()=>{
+        console.log(`server is running at port : ${process.env.PORT}`);
+    })
+})
+.catch((err)=>{
+    console.log("mongo db connect fail at index js !! ",err);
+    
+})
 
 
 
